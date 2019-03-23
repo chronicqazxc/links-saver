@@ -1,0 +1,42 @@
+<div id="sortlist" data-update-url="<%= sort_catalogs_url %>">
+
+  <div class="panel-group" id="catalog_<%= @catalog.id.to_s %>">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background-color: #D3D3D3;" >
+        <div class="panel-title">
+          <a data-toggle="collapse" href="#<%= 'collapsed_' + @catalog.id.to_s %>" class="accordion-toggle">
+            <h3>
+              <div style="display: inline; text-align: left;"><%= @catalog.title %></div>
+              <div style="display: inline; float: right;"><span class="glyphicon glyphicon-minus"></div>
+            </h3>
+          </a>
+        </div>
+        <p class="list-group-item-text"><%= @catalog.description %></p>
+      </div>
+
+      <div id="<%= 'collapsed_' + @catalog.id.to_s %>" class="panel-collapse collapse in">
+        <div id="links" data-update-url="<%= sort_links_url %>" class="list-group list-group-justified">
+            <%= link_to @link.title,
+                modal_catalogs_link_path(@catalog, @link),
+                remote: true,
+                title: @link.content,
+                'id' => "link_"+@link.id.to_s,
+                'class' => 'list-group-item',
+                'data-toggle' => 'tooltip',
+                'data-placement' => 'top' %>
+        </div>
+      </div>
+
+      </div>
+      <div class="panel-footing">
+        <div class="btn-group btn-group-justified">
+          <%= link_to 'Add / Edit links', catalog_path(@catalog), :class => "btn btn-success" %>
+          <%= link_to 'Edit Catalog', edit_catalog_path(@catalog), :class => "btn btn-success", :remote => true %>
+          <%= link_to 'Delete', catalog_path(@catalog), :class => "btn btn-danger",
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+
+</div>

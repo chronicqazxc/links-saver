@@ -1,0 +1,53 @@
+
+<%= form_with id: :searchForm, scope: :catalog, url: catalogs_path, class: 'common_table', method: :get, local: true, :html => {:class => "form-horizontal"} do |form| %>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="background-color: #D3D3D3;">
+      <div class="panel-title">
+        <a data-toggle="collapse" href="#collapsed_filter" class="accordion-toggle">
+          <h3>
+            <div style="display: inline; text-align: left;">Catalog Filter</div>
+              <div style="display: inline; float: right;"><span class="glyphicon glyphicon-plus"></span></div>
+          </h3>
+        </a>
+      </div>
+      <p class="list-group-item-text">Filter catalogs by checkbox and click <%= link_to 'Add catalog', new_catalog_path, :remote => true  %> to orginize related links</p>
+    </div>
+      <div id="collapsed_filter" class="panel-collapse collapse out">
+      <div class="list-group list-group-justified">
+          <% Catalog.all.each do |catalog| %>
+          <% checked_value = false %>
+          <% if @catalogs.include? catalog %>
+            <% checked_value = true %>
+          <% else %>
+            <% checked_value = false %>
+          <% end %>
+          <li class="list-group-item">
+            <label class="switch switch-primary" style="width: 100%; height: 100%;">
+              <%= check_box_tag 'catalog_ids[]', catalog.id, checked = checked_value, :onclick => "javascript: document.getElementById('searchForm').submit();" -%>
+              <%= h catalog.title -%>
+            </label>
+          </li>
+
+          <% end %>
+
+      </div>
+    </div>
+    <div class="panel-footing">
+      <%= link_to 'Add catalog', new_catalog_path, :class => "btn btn-primary btn-block", :remote => true  %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if @isSearch == true %>
+<%= render 'searchResults' %>
+<% else %>
+<%= render 'allLinks' %>
+<% end %>
+
+
+<hr/>
+
+<%= render 'footer' %>

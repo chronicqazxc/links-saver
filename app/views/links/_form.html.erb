@@ -1,0 +1,56 @@
+<%= form_with(model: [ @catalog, @catalog.links.build ], local: true, :html => {:class => "form-horizontal"}) do |form| %>
+
+<% if !@link.nil? %>
+
+  <% if @link.errors.any? %>
+
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@link.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.select(:link_type, options_for_select([['URL', '0'], ['Html page', '1']]), {}, {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.label :title %>
+    </div>
+    <div class="col-xs-12">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.label :content %>
+    </div>
+    <div class="col-xs-12">
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- <%= form.submit %> -->
+    <div class="col-xs-12">
+      <button class="btn btn-primary btn-block">Create Link</button>
+    </div>
+  </div>
+
+  <!-- <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save</button>
+  </div> -->
+<% end %>

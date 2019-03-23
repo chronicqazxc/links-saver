@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+// h1 {
+//     text-align: center;
+// }
+//
+// body  {
+//     background-image: url("/assets/wallpaper.jpg");
+//     background-color: #cccccc;
+//     position: absolute;
+//     background-size: cover;
+//     font-family: "Arial", Georgia, Serif;
+// }
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+td {
+    padding: 5px;
+}
+
+// .list-group-item {
+//     padding: 3px 10px
+// }
+
+.modal.modal-fullscreen .modal-content {
+  height: 95%;
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal.modal-fullscreen .modal-body {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.well {
+  margin: auto;
+  background-color: rgba(245, 245, 245, 0.5);
+
+  height: 100%;
+  width: 100%;
+
+}
+
+.tooltip-inner {
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* If max-width does not work, try using width instead */
+}
+
+.accordion-toggle:hover {
+    text-decoration: none;
+}
+
+// .panel-title h4:first-of-type {
+//     float: left;
+//     margin: auto;
+// }
+//
+// .panel-title h4:last-of-type {
+//     float: right;
+//     margin: auto;
+// }
+
+iframe {
+    background-image: url("/assets/Loading_icon.gif");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.spinner {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+}

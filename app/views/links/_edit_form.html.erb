@@ -1,0 +1,56 @@
+
+<%= form_with(model: [ @catalog, @link ], :html => {:class => "form-horizontal"}, local: true) do |form| %>
+
+<% if @link.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@link.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.collection_select :catalog_id, Catalog.all, :id, :title, {prompt: "Select a category"}, {class: "form-control"} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.select(:link_type, options_for_select([['URL', '0'], ['Html page', '1']], @link.link_type), {}, {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.label :title %>
+    </div>
+    <div class="col-xs-12">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= form.label :content %>
+    <div>
+    <div class="col-xs-13">
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-xs-14">
+        <button class="btn btn-primary btn-block">Save</button>
+      </div>
+    </div>
+    <!-- <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button> -->
+  </div>
+
+<% end %>

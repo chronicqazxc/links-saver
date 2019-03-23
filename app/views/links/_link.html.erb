@@ -1,0 +1,21 @@
+
+<p>
+  <strong>Type:</strong>
+  <%= link.link_type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= link.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= link.content %>
+</p>
+
+<p>
+  <%= link_to 'Delete Link', [link.catalog, link],
+  method: :delete,
+  data: { confirm: 'Are you sure?' }%>
+</p>

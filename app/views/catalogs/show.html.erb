@@ -1,0 +1,52 @@
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+
+<h3><%= @catalog.title %> - <%= @catalog.description %></h3>
+  <div class="table-responsive">
+  <table class="table-hover">
+  <tr>
+    <th>Type</th>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Operations</th>
+  </tr>
+  <% @catalog.links.each do |link| %>
+  <tr>
+    <td><%= link.typeString %></td>
+    <td><%= link.title %></td>
+    <td>
+      <%= link.content %>
+    </td>
+
+    <td>
+    <div class="btn-group btn-group-justified">
+      <%= link_to 'Edit', edit_catalog_link_path(@catalog, link), :class => "btn btn-success", :remote => true %>
+      <%= link_to 'Delete', catalog_link_path(@catalog, link), :class => "btn btn-danger",
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+    </div>
+    </td>
+
+  </tr>
+  <% end %>
+</table>
+</div>
+      <!-- render @catalog.links -->
+      <hr/>
+
+      <h3>Add a link:</h3>
+      <%= render 'links/form' %>
+      <hr/>
+
+      <table>
+      <tr>
+      <td><%= link_to 'Back', catalogs_path %></td>
+      <td><%= link_to 'Edit', edit_catalog_path(@catalog), :remote => true %></td>
+      </tr>
+      </table>

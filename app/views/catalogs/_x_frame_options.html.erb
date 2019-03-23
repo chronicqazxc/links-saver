@@ -1,0 +1,9 @@
+<% if @x_frame_options == "DENY" %>
+  <p><strong>This side doesn't support iframe, please click the url instead.</strong></p>
+<% elsif @x_frame_options == "SAMEORIGIN" %>
+  <p><strong>This side doesn't support iframe, please click the url instead.</strong></p>
+<% elsif @x_frame_options == "HTML" %>
+  <%=raw @link.content.gsub("\n"," ").squeeze(" ") %>
+<% else %>
+  <iframe id="myframe" src="<%= @link.content %>" style="width:100%; height:90%; border:none; margin:0; padding:0; overflow:hidden; z-index:10;"></iframe>
+<% end %>
