@@ -1,7 +1,15 @@
 # README
 
-## Pupose
-This App was created for experiment purpose which developed in Rails and deploy on Docker.
+## Screenshot
+![screenshot](https://github.com/chronicqazxc/links-saver/blob/master/public/image.png)
+
+## Intention
+I wrote this web application to collect the websites which I'm interesting.
+You can visit [wayne-links-saver](https://wayne-links-saver.herokuapp.com/catalogs?utf8=✓&term=&commit=Search) to take a look.
+
+## What's the next
+1. Add access management.
+2. Personalization.
 
 ## Deployment instructions
 1. New an App
